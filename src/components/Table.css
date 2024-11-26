@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.table-container {
+  width: 90vw;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+.row {
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+.row.row-heading {
+  padding: 15px 0;
+}
+
+.row * {
+  padding: 10px 0;
+}
