@@ -3,7 +3,7 @@ import Header from "./Header";
 import UsersTable from "./UsersTable";
 import Error from "./Error";
 
-import { getUsers } from "../services/userService";
+import { getUsers, deleteUser } from "../services/userService";
 
 const UserManagement = () => {
   const [user, setUser] = useState({
@@ -44,7 +44,11 @@ const UserManagement = () => {
   return (
     <>
       <Header user={user} setUser={setUser} />
-      <UsersTable users={users} />
+      <UsersTable
+        users={users}
+        handleDelete={handleDelete}
+        setError={setError}
+      />
     </>
   );
 };

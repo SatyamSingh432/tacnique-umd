@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+
 import "./TableRow.css";
 import UserForm from "./UserForm";
 
-const TableRow = ({ user }) => {
+const TableRow = ({ user, handleDelete, setError }) => {
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   const [editUser, setEditUser] = useState(user);
   const { id, name, email, address } = user;
@@ -21,7 +23,19 @@ const TableRow = ({ user }) => {
           >
             Edit
           </button>
-          <button className="btn delete-btn">Delete</button>
+          <button
+            className="btn delete-btn"
+            onClick={() => {
+              try {
+                handleDelete(user.id);
+                toast.success("User Deleted.");
+              } catch (err) {
+                setError(err);
+              }
+            }}
+          >
+            Delete
+          </button>
         </td>
       </tr>
       <UserForm
