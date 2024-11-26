@@ -1,9 +1,8 @@
 import TableRow from "./TableRow";
-import "./UserTable.css";
+import "./UsersTable.css";
 
-import { data } from "../data";
-
-const Table = () => {
+const UsersTable = ({ users }) => {
+  console.log(users);
   return (
     <main className="main">
       <table className="table-container">
@@ -17,7 +16,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((user) => {
+          {users?.map((user) => {
             return <TableRow key={user.id} user={user} />;
           })}
         </tbody>
@@ -26,4 +25,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default UsersTable;
