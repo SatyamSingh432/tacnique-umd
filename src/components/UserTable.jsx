@@ -12,19 +12,13 @@ const Table = () => {
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Address</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {data.map((user) => {
-            return (
-              <TableRow
-                key={user.id}
-                id={user.id}
-                name={user.name}
-                email={user.email}
-              />
-            );
+            return <TableRow key={user.id} user={user} />;
           })}
         </tbody>
       </table>

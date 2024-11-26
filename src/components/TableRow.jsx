@@ -1,11 +1,13 @@
 import "./TableRow.css";
 
-const TableRow = ({ id, name, email }) => {
+const TableRow = ({ user }) => {
+  const { id, name, email, address } = user;
   return (
     <tr className="row">
       <td>{id}</td>
       <td>{name}</td>
       <td>{email}</td>
+      <td>{`${address.street}, ${address.suite}, ${address.city}`}</td>
       <td className="actions">
         <button className="btn edit-btn">Edit</button>
 
