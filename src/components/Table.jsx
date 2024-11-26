@@ -1,4 +1,7 @@
+import TableRow from "./TableRow";
 import "./Table.css";
+
+import { data } from "../data";
 
 const Table = () => {
   return (
@@ -13,46 +16,16 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="row">
-            <td>1</td>
-            <td>Leanne Graham</td>
-            <td>Sincere@april.biz</td>
-            <td>
-              <span>Edit</span> / <span>Delete</span>
-            </td>
-          </tr>
-          <tr className="row">
-            <td>1</td>
-            <td>Leanne Graham</td>
-            <td>Sincere@april.biz</td>
-            <td>
-              <span>Edit</span> / <span>Delete</span>
-            </td>
-          </tr>
-          <tr className="row">
-            <td>1</td>
-            <td>Leanne Graham</td>
-            <td>Sincere@april.biz</td>
-            <td>
-              <span>Edit</span> / <span>Delete</span>
-            </td>
-          </tr>
-          <tr className="row">
-            <td>1</td>
-            <td>Leanne Graham</td>
-            <td>Sincere@april.biz</td>
-            <td>
-              <span>Edit</span> / <span>Delete</span>
-            </td>
-          </tr>
-          <tr className="row">
-            <td>1</td>
-            <td>Leanne Graham</td>
-            <td>Sincere@april.biz</td>
-            <td>
-              <span>Edit</span> / <span>Delete</span>
-            </td>
-          </tr>
+          {data.map((user) => {
+            return (
+              <TableRow
+                key={user.id}
+                id={user.id}
+                name={user.name}
+                email={user.email}
+              />
+            );
+          })}
         </tbody>
       </table>
     </main>
