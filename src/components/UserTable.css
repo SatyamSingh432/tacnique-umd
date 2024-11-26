@@ -5,19 +5,21 @@
 
 .table-container {
   width: 90vw;
-  border: 2px solid black;
+  border: 2px solid rgb(204, 204, 204);
   border-collapse: collapse;
 }
 
 .row {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(204, 204, 204);
   text-align: center;
-}
-
-.row.row-heading {
-  padding: 15px 0;
 }
 
 .row * {
   padding: 10px 0;
+}
+
+.row th {
+  padding: 15px 0;
+  font-size: large;
+  color: rgba(23, 143, 157, 1);
 }

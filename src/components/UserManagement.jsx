@@ -1,11 +1,11 @@
 import Header from "./Header";
-import Table from "./Table";
+import UserTable from "./UserTable";
 
 const UserManagement = () => {
   return (
     <>
       <Header />
-      <Table />
+      <UserTable />
     </>
   );
 };

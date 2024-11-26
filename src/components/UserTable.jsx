@@ -1,5 +1,5 @@
 import TableRow from "./TableRow";
-import "./Table.css";
+import "./UserTable.css";
 
 import { data } from "../data";
 
