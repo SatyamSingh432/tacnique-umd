@@ -1,7 +1,12 @@
 import "./App.css";
+import UserManagement from "./components/UserManagement";
 
 function App() {
-  return <>Hello World</>;
+  return (
+    <>
+      <UserManagement />
+    </>
+  );
 }
 
 export default App;
