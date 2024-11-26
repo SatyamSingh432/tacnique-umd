@@ -3,18 +3,23 @@ import { Modal as ReactModal } from "react-responsive-modal";
 
 import "./UserForm.css";
 
-const UserForm = ({ isFormOpen, setIsFormOpen }) => {
+const UserForm = ({ isFormOpen, setIsFormOpen, user, setUser, isEdit }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    console.log({ user });
+  };
+
+  const handleChange = (evt) => {
+    setUser({ ...user, [evt.target.name]: evt.target.value });
   };
 
   return (
     <ReactModal open={isFormOpen} onClose={() => setIsFormOpen(false)} center>
       <div className="form-container">
-        <form class="user-form" onSubmit={handleSubmit}>
-          <h2>Add A New User</h2>
+        <form className="user-form" onSubmit={handleSubmit}>
+          <h2>{isEdit ? "Edit" : "Add A New"} User</h2>
 
-          <label for="name">
+          <label htmlFor="name">
             Name <span className="required">*</span>
           </label>
           <input
@@ -23,9 +28,11 @@ const UserForm = ({ isFormOpen, setIsFormOpen }) => {
             name="name"
             placeholder="Full Name"
             required
+            value={user?.name}
+            onChange={handleChange}
           />
 
-          <label for="email">
+          <label htmlFor="email">
             Email <span className="required">*</span>
           </label>
           <input
@@ -34,9 +41,11 @@ const UserForm = ({ isFormOpen, setIsFormOpen }) => {
             name="email"
             placeholder="Email"
             required
+            value={user?.email}
+            onChange={handleChange}
           />
 
-          <label for="street">
+          <label htmlFor="street">
             Street <span className="required">*</span>
           </label>
           <input
@@ -45,9 +54,11 @@ const UserForm = ({ isFormOpen, setIsFormOpen }) => {
             name="street"
             placeholder="Street"
             required
+            value={user?.street}
+            onChange={handleChange}
           />
 
-          <label for="suite">
+          <label htmlFor="suite">
             Suite <span className="required">*</span>
           </label>
           <input
@@ -56,9 +67,11 @@ const UserForm = ({ isFormOpen, setIsFormOpen }) => {
             name="suite"
             placeholder="Suite"
             required
+            value={user?.suite}
+            onChange={handleChange}
           />
 
-          <label for="city">
+          <label htmlFor="city">
             City <span className="required">*</span>
           </label>
           <input
@@ -67,9 +80,11 @@ const UserForm = ({ isFormOpen, setIsFormOpen }) => {
             name="city"
             placeholder="City"
             required
+            value={user?.city}
+            onChange={handleChange}
           />
 
-          <label for="phone">
+          <label htmlFor="phone">
             Phone <span className="required">*</span>
           </label>
           <input
@@ -78,9 +93,11 @@ const UserForm = ({ isFormOpen, setIsFormOpen }) => {
             name="phone"
             placeholder="Phone"
             required
+            value={user?.phone}
+            onChange={handleChange}
           />
 
-          <label for="companyName">
+          <label htmlFor="companyName">
             Company Name <span className="required">*</span>
           </label>
           <input
@@ -89,9 +106,11 @@ const UserForm = ({ isFormOpen, setIsFormOpen }) => {
             name="companyName"
             placeholder="Company Name"
             required
+            value={user?.companyName}
+            onChange={handleChange}
           />
           <div className="btn-container">
-            <button type="submit">Submit</button>
+            <button type="submit">{isEdit ? "Save Changes" : "Submit"}</button>
           </div>
         </form>
       </div>
