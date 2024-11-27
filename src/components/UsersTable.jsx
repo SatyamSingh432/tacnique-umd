@@ -18,6 +18,7 @@ const UsersTable = ({
             <th>Name</th>
             <th>Email</th>
             <th>Address</th>
+            <th>Company Name</th>
             <th>Actions</th>
           </tr>
         </thead>

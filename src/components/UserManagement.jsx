@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./Header";
 import UsersTable from "./UsersTable";
 import Error from "./Error";
+import Footer from "./Footer";
 import {
   getUsers,
   deleteUser,
@@ -121,6 +122,7 @@ const UserManagement = () => {
           handleUpdate={handleUpdate}
         />
       )}
+      <Footer />
     </>
   );
 };

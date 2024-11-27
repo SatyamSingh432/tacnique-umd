@@ -14,7 +14,7 @@ const TableRow = ({
 }) => {
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
 
-  const { id, name, email, address } = currentUser;
+  const { id, name, email, address, company } = currentUser;
 
   const handleDeleteUser = async () => {
     try {
@@ -35,6 +35,7 @@ const TableRow = ({
         <td>{name}</td>
         <td>{email}</td>
         <td className="address">{`${address.street}, ${address.suite}, ${address.city}`}</td>
+        <td>{company.name}</td>
         <td className="actions">
           <button
             className="btn edit-btn"
