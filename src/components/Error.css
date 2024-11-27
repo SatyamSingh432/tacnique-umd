@@ -1,0 +1,18 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.error span {
+  color: red;
+}
+
+.reload {
+  cursor: pointer;
+  color: rgb(23 143 157);
+  text-decoration: underline;
+}
