@@ -2,6 +2,8 @@
 
 This project is a React-based User Management Application created using Vite. It showcases the ability to view, add, edit, and delete user data. The UI is styled using plain CSS without any component libraries to ensure full customization and simplicity.
 
+Access Here - https://satyam-tacnique-umd.netlify.app/
+
 ## Features
 
 - Display Users: Fetch and display a list of users with their details.
@@ -17,6 +19,9 @@ This project is a React-based User Management Application created using Vite. It
 - Build Tool: Vite
 - Styling: Plain CSS (No component libraries)
 - API: Data fetched from JSONPlaceholder (a free REST API for testing)
+- React Toastify: For toast notification
+- React Responsive Modal: For form Modal
+- Axios: For data fetching
 
 ## Setup Instructions
 
