@@ -35,7 +35,7 @@ const TableRow = ({
         <td>{name || "--"}</td>
         <td>{email || "--"}</td>
         <td className="address">
-          {`${address.street}, ${address.suite}, ${address.city}` | "--"}
+          {`${address.street}, ${address.suite}, ${address.city}` || "--"}
         </td>
         <td>{company.name || "--"}</td>
         <td className="actions">
