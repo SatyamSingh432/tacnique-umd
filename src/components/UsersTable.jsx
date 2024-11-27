@@ -24,7 +24,6 @@ const UsersTable = ({
         </thead>
         <tbody>
           {users?.map((currentUser) => {
-            console.log({ currentUser });
             return (
               <TableRow
                 user={user}
