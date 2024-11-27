@@ -34,7 +34,7 @@ const TableRow = ({
         <td>{id}</td>
         <td>{name}</td>
         <td>{email}</td>
-        <td>{`${address.street}, ${address.suite}, ${address.city}`}</td>
+        <td className="address">{`${address.street}, ${address.suite}, ${address.city}`}</td>
         <td className="actions">
           <button
             className="btn edit-btn"

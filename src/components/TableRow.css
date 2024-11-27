@@ -23,3 +23,23 @@
 .delete-btn:hover {
   background-color: rgb(212, 48, 48);
 }
+
+.address {
+  max-width: 300px;
+}
+
+@media screen and (max-width: 950px) {
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .btn.delete-btn {
+    font-size: 12px;
+  }
+  .btn.edit-btn {
+    font-size: 12px;
+  }
+}

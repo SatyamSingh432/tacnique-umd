@@ -49,3 +49,13 @@
 .required {
   color: rgb(255, 0, 0);
 }
+@media screen and (max-width: 650px) {
+  .form-container {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .form-container {
+    width: 200px;
+  }
+}
