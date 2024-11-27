@@ -1,8 +1,14 @@
 import TableRow from "./TableRow";
 import "./UsersTable.css";
 
-const UsersTable = ({ users, handleDelete, setError }) => {
-  console.log(users);
+const UsersTable = ({
+  users,
+  handleDelete,
+  setError,
+  handleUpdate,
+  setUser,
+  user,
+}) => {
   return (
     <main className="main">
       <table className="table-container">
@@ -16,14 +22,17 @@ const UsersTable = ({ users, handleDelete, setError }) => {
           </tr>
         </thead>
         <tbody>
-          {/* TODO: Add Loading State */}
-          {users?.map((user) => {
+          {users?.map((currentUser) => {
+            console.log({ currentUser });
             return (
               <TableRow
-                key={user.id}
                 user={user}
+                setUser={setUser}
+                key={currentUser.id}
+                currentUser={currentUser}
                 handleDelete={handleDelete}
                 setError={setError}
+                handleUpdate={handleUpdate}
               />
             );
           })}

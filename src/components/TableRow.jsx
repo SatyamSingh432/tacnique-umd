@@ -4,10 +4,29 @@ import { toast } from "react-toastify";
 import "./TableRow.css";
 import UserForm from "./UserForm";
 
-const TableRow = ({ user, handleDelete, setError }) => {
+const TableRow = ({
+  currentUser,
+  handleDelete,
+  setError,
+  handleUpdate,
+  setUser,
+  user,
+}) => {
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
-  const [editUser, setEditUser] = useState(user);
-  const { id, name, email, address } = user;
+
+  const { id, name, email, address } = currentUser;
+
+  const handleDeleteUser = async () => {
+    try {
+      await toast.promise(handleDelete(currentUser.id), {
+        pending: "Deleting User.",
+        success: "User Deleted.",
+        error: "User Deletion Failed",
+      });
+    } catch (err) {
+      setError(err);
+    }
+  };
 
   return (
     <>
@@ -19,24 +38,25 @@ const TableRow = ({ user, handleDelete, setError }) => {
         <td className="actions">
           <button
             className="btn edit-btn"
-            onClick={() => setIsEditFormOpen(true)}
+            onClick={() => {
+              setIsEditFormOpen(true);
+
+              const userToEdit = {
+                id,
+                name: name,
+                email: email,
+                street: address?.street,
+                suite: address?.suite,
+                city: address?.city,
+                phone: currentUser?.phone,
+                companyName: currentUser?.company?.name,
+              };
+              setUser(userToEdit);
+            }}
           >
             Edit
           </button>
-          <button
-            className="btn delete-btn"
-            onClick={async () => {
-              try {
-                await toast.promise(handleDelete(user.id), {
-                  pending: "Deleting User.",
-                  success: "User Deleted.",
-                  error: "User Deletion Failed",
-                });
-              } catch (err) {
-                setError(err);
-              }
-            }}
-          >
+          <button className="btn delete-btn" onClick={handleDeleteUser}>
             Delete
           </button>
         </td>
@@ -45,16 +65,9 @@ const TableRow = ({ user, handleDelete, setError }) => {
         isFormOpen={isEditFormOpen}
         setIsFormOpen={setIsEditFormOpen}
         isEdit
-        user={{
-          name: name,
-          email: email,
-          street: address?.street,
-          suite: address?.suite,
-          city: address?.city,
-          phone: editUser?.phone,
-          companyName: editUser?.company?.name,
-        }}
-        setUser={setEditUser}
+        user={user}
+        setUser={setUser}
+        handleUpdate={handleUpdate}
       />
     </>
   );

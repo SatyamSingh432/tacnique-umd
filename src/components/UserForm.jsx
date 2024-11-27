@@ -13,10 +13,18 @@ const UserForm = ({
   isEdit,
   handleAddUser,
   setError,
+  handleUpdate,
 }) => {
-  const handleSubmit = async (evt) => {
+  const handleSubmitUser = async (evt) => {
     evt.preventDefault();
-    console.log({ user });
+    if (isEdit) {
+      await editUser();
+    } else {
+      await createUser();
+    }
+  };
+
+  const createUser = async () => {
     try {
       await toast.promise(handleAddUser(user), {
         pending: "Adding User..",
@@ -30,6 +38,21 @@ const UserForm = ({
     }
   };
 
+  const editUser = async () => {
+    try {
+      console.log({ user });
+      await toast.promise(handleUpdate(user.id, user), {
+        pending: "Updating User..",
+        success: "User Updated.",
+        error: "Failed to Update User",
+      });
+
+      setIsFormOpen(false);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
   const handleChange = (evt) => {
     setUser({ ...user, [evt.target.name]: evt.target.value });
   };
@@ -37,7 +60,7 @@ const UserForm = ({
   return (
     <ReactModal open={isFormOpen} onClose={() => setIsFormOpen(false)} center>
       <div className="form-container">
-        <form className="user-form" onSubmit={handleSubmit}>
+        <form className="user-form" onSubmit={handleSubmitUser}>
           <h2>{isEdit ? "Edit" : "Add A New"} User</h2>
 
           <label htmlFor="name">

@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import Header from "./Header";
 import UsersTable from "./UsersTable";
 import Error from "./Error";
-import { getUsers, deleteUser, addUser } from "../services/userService";
+import {
+  getUsers,
+  deleteUser,
+  addUser,
+  updateUser,
+} from "../services/userService";
 
 import "./UserManagement.css";
 
@@ -73,6 +78,23 @@ const UserManagement = () => {
     }
   };
 
+  const handleUpdate = async (id, user) => {
+    try {
+      const userToEdit = serializeData(user);
+      const resp = await updateUser(id, userToEdit);
+      setUsers(
+        users.map((user) => {
+          if (user.id === id) {
+            user = resp;
+          }
+          return user;
+        })
+      );
+    } catch (err) {
+      setError(err);
+    }
+  };
+
   if (error) return <Error message={error} />;
 
   return (
@@ -91,9 +113,12 @@ const UserManagement = () => {
         </div>
       ) : (
         <UsersTable
+          user={user}
+          setUser={setUser}
           users={users}
           handleDelete={handleDelete}
           setError={setError}
+          handleUpdate={handleUpdate}
         />
       )}
     </>
