@@ -17,12 +17,16 @@ const UserManagement = () => {
   });
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
+  
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        setIsLoading(true);
         const data = await getUsers();
         setUsers(data);
+        setIsLoading(false);
       } catch (error) {
         setError(error.message);
       }
@@ -43,12 +47,20 @@ const UserManagement = () => {
 
   return (
     <>
-      <Header user={user} setUser={setUser} />
-      <UsersTable
-        users={users}
-        handleDelete={handleDelete}
-        setError={setError}
-      />
+      <Header user={user} setUser={setUser} handleAddUser={handleAddUser} />
+      {isLoading ? (
+        <div className="loading-container">
+          <div className="loading">
+            <div class="loader"></div>
+          </div>
+        </div>
+      ) : (
+        <UsersTable
+          users={users}
+          handleDelete={handleDelete}
+          setError={setError}
+        />
+      )}
     </>
   );
 };
