@@ -40,7 +40,6 @@ const UserForm = ({
 
   const editUser = async () => {
     try {
-      console.log({ user });
       await toast.promise(handleUpdate(user.id, user), {
         pending: "Updating User..",
         success: "User Updated.",
