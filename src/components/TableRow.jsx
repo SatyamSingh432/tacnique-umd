@@ -25,10 +25,13 @@ const TableRow = ({ user, handleDelete, setError }) => {
           </button>
           <button
             className="btn delete-btn"
-            onClick={() => {
+            onClick={async () => {
               try {
-                handleDelete(user.id);
-                toast.success("User Deleted.");
+                await toast.promise(handleDelete(user.id), {
+                  pending: "Deleting User.",
+                  success: "User Deleted.",
+                  error: "User Deletion Failed",
+                });
               } catch (err) {
                 setError(err);
               }

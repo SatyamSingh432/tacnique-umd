@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Header.css";
 import UserForm from "./UserForm";
 
-const Header = ({ user, setUser }) => {
+const Header = ({ user, setUser, handleAddUser, setError }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   return (
     <header className="header">
@@ -15,6 +15,8 @@ const Header = ({ user, setUser }) => {
         setIsFormOpen={setIsFormOpen}
         user={user}
         setUser={setUser}
+        handleAddUser={handleAddUser}
+        setError={setError}
       />
     </header>
   );

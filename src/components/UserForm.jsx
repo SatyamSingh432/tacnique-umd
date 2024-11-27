@@ -1,12 +1,33 @@
-import "react-responsive-modal/styles.css";
+import { toast } from "react-toastify";
 import { Modal as ReactModal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
+import { userInitalState } from "./UserManagement";
 
 import "./UserForm.css";
 
-const UserForm = ({ isFormOpen, setIsFormOpen, user, setUser, isEdit }) => {
-  const handleSubmit = (evt) => {
+const UserForm = ({
+  isFormOpen,
+  setIsFormOpen,
+  user,
+  setUser,
+  isEdit,
+  handleAddUser,
+  setError,
+}) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     console.log({ user });
+    try {
+      await toast.promise(handleAddUser(user), {
+        pending: "Adding User..",
+        success: "User Added.",
+        error: "Failed to Add User",
+      });
+      setUser(userInitalState);
+      setIsFormOpen(false);
+    } catch (err) {
+      setError(err);
+    }
   };
 
   const handleChange = (evt) => {
