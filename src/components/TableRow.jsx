@@ -31,11 +31,13 @@ const TableRow = ({
   return (
     <>
       <tr className="row">
-        <td>{id}</td>
-        <td>{name}</td>
-        <td>{email}</td>
-        <td className="address">{`${address.street}, ${address.suite}, ${address.city}`}</td>
-        <td>{company.name}</td>
+        <td>{id || "--"}</td>
+        <td>{name || "--"}</td>
+        <td>{email || "--"}</td>
+        <td className="address">
+          {`${address.street}, ${address.suite}, ${address.city}` | "--"}
+        </td>
+        <td>{company.name || "--"}</td>
         <td className="actions">
           <button
             className="btn edit-btn"
